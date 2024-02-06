@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: expDrop
       value: 
-      objectReference: {fileID: 4340697714764753884, guid: 5d065a118069d444789ae4854e92b297, type: 3}
+      objectReference: {fileID: 4340697714764753884, guid: 1208656bc82101349bd3959f1a3170ff, type: 3}
     - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: velocity
       value: 2
@@ -39,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 7031346048408123597, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7d9d6a35c4c66c745a1fef4e5674f853, type: 3}
+      objectReference: {fileID: 21300000, guid: 4469129c01828774682438acc45e6896, type: 3}
     - target: {fileID: 7031346048408123597, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -54,15 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7221944669105669178, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.5
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 7221944669105669178, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7221944669105669178, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7221944669105669178, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7221944669105669178, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7330758026999797753, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: m_Radius

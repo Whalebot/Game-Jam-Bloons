@@ -22,10 +22,13 @@ public class BalloonSpawner : MonoBehaviour
         }
         else
         {
-            if (timer <= 0)
+            if (!GameManager.Instance.timeOver)
             {
-                timer = GameManager.Instance.CurrentWave().spawnRate;
-                GameManager.Instance.SpawnWave(transform.position);
+                if (timer <= 0)
+                {
+                    timer = GameManager.Instance.CurrentWave().spawnRate;
+                    GameManager.Instance.SpawnWave(transform.position);
+                }
             }
         }
     }

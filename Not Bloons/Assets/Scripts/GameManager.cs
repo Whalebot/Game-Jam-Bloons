@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     void GameWin()
     {
         won = true;
+        AudioManager.Instance.StopMusic();
         AudioManager.Instance.PlaySFX(winSFX);
         Time.timeScale = 0;
         gameWinEvent?.Invoke();
@@ -115,6 +116,7 @@ public class GameManager : MonoBehaviour
             }
             if (timeOver != true)
             {
+                AudioManager.Instance.StartBossMusic();
                 Instantiate(bossPrefab, bossSpawnLocation.position, Quaternion.identity);
                 timeOver = true;
             }
@@ -158,7 +160,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void RestartTheGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(0);
     }
 
 }

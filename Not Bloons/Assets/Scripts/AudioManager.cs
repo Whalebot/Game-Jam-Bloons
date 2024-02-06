@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
     public AudioSource AS;
     public List<AudioSource> sfx;
-
+    public AudioClip bossClip;
     public float fadeSpeed;
     public AudioSource SFXPrefab;
     float ASstart;
@@ -35,7 +35,16 @@ public class AudioManager : MonoBehaviour
             Destroy(temp[i].gameObject);
         }
     }
-
+    public void StopMusic()
+    {
+        AS.Stop();
+        AS.gameObject.SetActive(false);
+    }
+    public void StartBossMusic()
+    {
+        AS.clip = bossClip; 
+        AS.Play(); 
+    }
     public void PlaySFX(SFX temp, Vector3 position = default(Vector3))
     {
         AudioSource sfx = Instantiate(SFXPrefab, position, Quaternion.identity);

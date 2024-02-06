@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < hearts.Count; i++)
         {
-            if (GameManager.Instance.monkey.health - 1 <= i)
+            if (GameManager.Instance.monkey.health <= i)
             {
                 hearts[i].transform.GetChild(0).gameObject.SetActive(false);
             }
@@ -88,7 +88,7 @@ public class UIManager : MonoBehaviour
         levelText.text = "Lv: " + GameManager.Instance.level;
         expBar.fillAmount = ((float)GameManager.Instance.exp / (float)GameManager.Instance.expToLevel);
 
-        if (GameManager.Instance.timeOver)
+        if (!GameManager.Instance.timeOver)
         {
             //Text Timer stuff
             string minutes = Mathf.Floor(GameManager.Instance.timer / 60).ToString("00");

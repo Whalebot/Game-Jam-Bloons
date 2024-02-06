@@ -12,6 +12,7 @@ public class Monkey : MonoBehaviour
     public int maxHealth;
     public float velocity;
     public float minimumMovementRange = 1F;
+    public bool godMode = false;
 
     [Header("Dart Shooting")]
     public int dartsPerShot = 1;
@@ -19,6 +20,7 @@ public class Monkey : MonoBehaviour
     public float dartSpawnSpacing = 0f;
     public GameObject dartPrefab;
     public float dartRateOfFire = 0.1F;
+    public float sizeModifier = 1F;
     public SFX dartShootSFX;
 
     [Header("Extras")]
@@ -34,6 +36,7 @@ public class Monkey : MonoBehaviour
     public event Action rightButtonPress;
 
     public event Action updateHealthEvent;
+    public event Action takeHitEvent;
     public event Action deathEvent;
     // Start is called before the first frame update
     void Start()
@@ -41,13 +44,15 @@ public class Monkey : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         buttonHoldAction = SpawnDart;
     }
-    public int Health {
+    public int Health
+    {
         get { return health; }
-        set {
-            updateHealthEvent?.Invoke();
+        set
+        {
             health = Mathf.Clamp(value, 0, maxHealth);
+            updateHealthEvent?.Invoke();
         }
-    
+
     }
     // Update is called once per frame
     void Update()
@@ -101,7 +106,7 @@ public class Monkey : MonoBehaviour
     }
     public void TakeHit(int dmg = 1)
     {
-  
+        if (godMode) return;
         health -= dmg;
         if (health <= 0 && !dead)
         {
@@ -109,6 +114,7 @@ public class Monkey : MonoBehaviour
             deathEvent?.Invoke();
             Debug.Log("Death");
         }
+        takeHitEvent?.Invoke();
         updateHealthEvent?.Invoke();
     }
     private void FixedUpdate()
@@ -161,7 +167,8 @@ public class Monkey : MonoBehaviour
                     spawnOffset = i * dartSpawnSpacing - (int)(dartsPerShot / 2f) * dartSpawnSpacing + 0.5f * dartSpawnSpacing;
                     dartRotation.z -= offset;
                 }
-                Instantiate(dartPrefab, gunStartPosition.transform.position + transform.right * spawnOffset, Quaternion.Euler(dartRotation));
+                GameObject go = Instantiate(dartPrefab, gunStartPosition.transform.position + transform.right * spawnOffset, Quaternion.Euler(dartRotation));
+                go.transform.localScale = Vector3.one * sizeModifier;
             }
         }
     }

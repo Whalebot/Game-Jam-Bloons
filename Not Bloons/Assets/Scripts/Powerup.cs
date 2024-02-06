@@ -28,7 +28,7 @@ public class Powerup : MonoBehaviour
 
     public enum PowerupTypes
     {
-        FireRate, DartsFired, DartSpread, DartSpacing, MovementSpeed, Health
+        FireRate, DartsFired, DartSpread, DartSpacing, MovementSpeed, Health, DartSize
     }
     public void GivePowerup()
     {
@@ -53,6 +53,9 @@ public class Powerup : MonoBehaviour
             case PowerupTypes.Health:
                 GameManager.Instance.monkey.maxHealth++;
                 GameManager.Instance.monkey.Health++;
+                break;
+            case PowerupTypes.DartSize:
+                GameManager.Instance.monkey.sizeModifier += 0.5f;
                 break;
             default:
                 break;

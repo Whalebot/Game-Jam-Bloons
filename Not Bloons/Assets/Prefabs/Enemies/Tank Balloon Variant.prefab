@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: expDrop
       value: 
-      objectReference: {fileID: 4340697714764753884, guid: 3027bde69680a1143a82cfaeea8fc079, type: 3}
+      objectReference: {fileID: 4340697714764753884, guid: 5d065a118069d444789ae4854e92b297, type: 3}
     - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: velocity
       value: 1.5

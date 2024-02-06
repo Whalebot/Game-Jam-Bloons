@@ -1287,8 +1287,8 @@ MonoBehaviour:
   timeOver: 0
   gameOver: 0
   won: 0
-  timer: 300
-  timePassed: 300
+  timer: 180
+  timePassed: 180
   wave: 1
   waveChangeSFX:
     startup: 1
@@ -1342,7 +1342,7 @@ MonoBehaviour:
     - {fileID: 200490518604873198, guid: aa2ebec8adee47f45834903eecf8bc32, type: 3}
     - {fileID: 6515560163672394270, guid: 51a135556813dec489aa8c756f907411, type: 3}
     spawnRate: 1.5
-  bossPrefab: {fileID: 0}
+  bossPrefab: {fileID: 6515560163672394270, guid: f1c213caa73ece643a220a8b5045819a, type: 3}
   bossSpawnLocation: {fileID: 1330945430}
 --- !u!4 &629725430
 Transform:
@@ -1506,11 +1506,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupDrops:
   - {fileID: 4340697714764753884, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
-  - {fileID: 870624639812198743, guid: 6a1a888dfc651fe4d9325467ab58f544, type: 3}
   - {fileID: 2383277370847805992, guid: 5344f7e2adf098e448f25cc5f33f923d, type: 3}
-  - {fileID: 870624639812198743, guid: 24304e3026193ab488953b056a1722a5, type: 3}
-  - {fileID: 870624639812198743, guid: 56e7ea0c51d4a0e40913f44b9f58adca, type: 3}
   - {fileID: 4340697714764753884, guid: 920f898c2f821924a88ccecbe5e06b7c, type: 3}
+  - {fileID: 4340697714764753884, guid: de74b2c88a145d04a852a327f7b8c8fb, type: 3}
+  - {fileID: 4340697714764753884, guid: 59ed84a947baecf4fa0e7c3d4ca5847e, type: 3}
   allBalloons: []
 --- !u!1 &832955052
 GameObject:
@@ -1968,7 +1967,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dec244f5f5d62a14ea3e512e6ac61fba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c5de1c7c2ee2f32488436deaeeb7a53e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.503
   m_Pitch: 1
@@ -2341,6 +2340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AS: {fileID: 1069186899}
   sfx: []
+  bossClip: {fileID: 8300000, guid: 6eccf6b5bf93dc447bb231e7ea5baac1, type: 3}
   fadeSpeed: 0
   SFXPrefab: {fileID: 6937377405233935958, guid: 6797596c053abc24f94ff537cfd23df7, type: 3}
 --- !u!4 &1356367131
@@ -2372,6 +2372,7 @@ GameObject:
   - component: {fileID: 1367780842}
   - component: {fileID: 1367780841}
   - component: {fileID: 1367780845}
+  - component: {fileID: 1367780846}
   m_Layer: 5
   m_Name: UI Manager
   m_TagString: Untagged
@@ -2499,6 +2500,21 @@ MonoBehaviour:
   - {fileID: 6192313113982437437}
   - {fileID: 1346198117}
   - {fileID: 1147189071}
+--- !u!114 &1367780846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367780840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940c7cf3556f1d045ad9507bec66b404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiElement: {fileID: 2140122644}
+  shakeMagnitude: 10
+  shakeDuration: 0.5
 --- !u!1001 &1376265060
 PrefabInstance:
   m_ObjectHideFlags: 0

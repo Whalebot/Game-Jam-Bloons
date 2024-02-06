@@ -172,19 +172,20 @@ public class Balloon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (balloonType != BalloonType.Boss)
-            if (collision.collider != null)
+
+        if (collision.collider != null)
+        {
+            if (collision.gameObject.CompareTag("Player"))
             {
-                if (collision.gameObject.CompareTag("Player"))
+                Monkey monkey = collision.gameObject.GetComponent<Monkey>();
+                if (monkey != null)
                 {
-                    Monkey monkey = collision.gameObject.GetComponent<Monkey>();
-                    if (monkey != null)
-                    {
-                        monkey.TakeHit();
+                    monkey.TakeHit();
+                    if (balloonType != BalloonType.Boss)
                         Death();
-                    }
                 }
             }
+        }
     }
 
     public enum BalloonType
