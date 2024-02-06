@@ -931,6 +931,12 @@ MonoBehaviour:
   timer: 300
   timePassed: 300
   wave: 1
+  waveChangeSFX:
+    startup: 1
+    audioClips:
+    - {fileID: 8300000, guid: 641bcb629d1738045a0ada7fa9b393b1, type: 3}
+    volume: 1
+    pitchRange: 0
   waves:
   - enemyTypes:
     - {fileID: 6814026654582649053, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
@@ -1725,7 +1731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 200490518604873198, guid: aa2ebec8adee47f45834903eecf8bc32, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4062669463431285001, guid: aa2ebec8adee47f45834903eecf8bc32, type: 3}
       propertyPath: m_LocalPosition.x
