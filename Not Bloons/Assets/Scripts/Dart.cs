@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Dart : MonoBehaviour
 {
+    public bool isMonkey = false;
     public float velocity;
     public float lifetime = 5;
 
@@ -16,15 +17,16 @@ public class Dart : MonoBehaviour
         StartCoroutine(DestroyAfterTime());
     }
 
-    IEnumerator DestroyAfterTime() {
+    IEnumerator DestroyAfterTime()
+    {
         //Do this first
         yield return new WaitForSeconds(lifetime);
         //After lifetime seconds do this
-        
+
         yield return new WaitForSecondsRealtime(lifetime);
-     
+
         Destroy(gameObject);
-    
+
     }
 
     private void FixedUpdate()
@@ -34,12 +36,27 @@ public class Dart : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Balloon balloon = collision.GetComponent<Balloon>();
-
-        if (balloon != null)
+        if (isMonkey)
         {
-            balloon.TakeHit();
-            Destroy(gameObject);
+            Balloon balloon = collision.GetComponent<Balloon>();
+
+            if (balloon != null)
+            {
+                balloon.TakeHit();
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                Monkey monkey = collision.gameObject.GetComponent<Monkey>();
+                if (monkey != null)
+                {
+                    monkey.TakeHit();
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 }

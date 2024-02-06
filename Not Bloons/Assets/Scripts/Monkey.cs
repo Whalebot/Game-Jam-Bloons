@@ -6,21 +6,26 @@ using UnityEngine;
 
 public class Monkey : MonoBehaviour
 {
+    [Header("Controller")]
     public Vector2 inputDirection;
     public int health;
-    public int dartsPerShot = 1;
-    public float dartSpreadAngle = 10f;
-
     public float velocity;
     public float minimumMovementRange = 1F;
 
+    [Header("Dart Shooting")]
+    public int dartsPerShot = 1;
+    public float dartSpreadAngle = 10f;
+    public float dartSpawnSpacing = 0f;
+    public GameObject dartPrefab;
+    public float dartRateOfFire = 0.1F;
+    public SFX dartShootSFX;
+
+    [Header("Extras")]
     public Transform crosshair;
     public Transform gunStartPosition;
     public LineRenderer laserLineRenderer;
 
-    public GameObject dartPrefab;
-    public float spawnRate = 0.1F;
-    float timer;
+    float lastTimeShot;
     Rigidbody2D rb;
     public event Action buttonHoldAction;
     public event Action buttonPressAction;
@@ -48,9 +53,6 @@ public class Monkey : MonoBehaviour
         UpdateCrosshair(GetMouseWorldPosition());
 
         transform.up = (crosshair.position - transform.position).normalized;
-
-
-        timer -= Time.deltaTime;
 
         if (Input.GetMouseButton(0))
         {
@@ -118,23 +120,30 @@ public class Monkey : MonoBehaviour
 
     void SpawnDart()
     {
-        if (timer < 0)
+        if (Time.time > lastTimeShot + (1 / dartRateOfFire))
         {
-            timer = spawnRate;
+            lastTimeShot = Time.time;
+
+            AudioManager.Instance.PlaySFX(dartShootSFX, transform.position);
+
             for (int i = 0; i < dartsPerShot; i++)
             {
                 Vector3 dartRotation = transform.rotation.eulerAngles;
+                float spawnOffset = 0;
+
                 if (dartsPerShot % 2 == 1)
                 {
                     float offset = i * dartSpreadAngle - (int)(dartsPerShot / 2f) * dartSpreadAngle;
+                    spawnOffset = i * dartSpawnSpacing - (int)(dartsPerShot / 2f) * dartSpawnSpacing;
                     dartRotation.z += offset;
                 }
                 else
                 {
                     float offset = i * dartSpreadAngle - (int)(dartsPerShot / 2f) * dartSpreadAngle + 0.5f * dartSpreadAngle;
+                    spawnOffset = i * dartSpawnSpacing - (int)(dartsPerShot / 2f) * dartSpawnSpacing + 0.5f * dartSpawnSpacing;
                     dartRotation.z += offset;
                 }
-                Instantiate(dartPrefab, gunStartPosition.transform.position, Quaternion.Euler(dartRotation));
+                Instantiate(dartPrefab, gunStartPosition.transform.position + transform.right * spawnOffset, Quaternion.Euler(dartRotation));
             }
         }
     }

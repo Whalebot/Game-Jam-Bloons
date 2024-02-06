@@ -18,23 +18,8 @@ public class Powerup : MonoBehaviour
             Monkey monkey = collision.GetComponent<Monkey>();
             if (monkey != null)
             {
-                //Double Attack speed
-                Random.Range(0, 2);
-                switch (powerupType)
-                {
-                    case PowerupTypes.AttackSpeed:
-                        monkey.spawnRate *= 0.5f;
-                        break;
-                    case PowerupTypes.DartsFired:
-                        monkey.dartsPerShot ++;
-                        break;
-                    case PowerupTypes.Spread:
-                        monkey.dartSpreadAngle +=5;
-                        break;
-                    default:
-                        break;
-                }
-     
+                GivePowerup();
+
                 Destroy(gameObject);
             }
         }
@@ -42,6 +27,29 @@ public class Powerup : MonoBehaviour
 
     public enum PowerupTypes
     {
-        AttackSpeed, DartsFired, Spread
+        FireRate, DartsFired, DartSpread, DartSpacing, MovementSpeed
+    }
+    public void GivePowerup()
+    {
+        switch (powerupType)
+        {
+            case PowerupTypes.FireRate:
+                GameManager.Instance.monkey.dartRateOfFire += 0.5f;
+                break;
+            case PowerupTypes.DartsFired:
+                GameManager.Instance.monkey.dartsPerShot++;
+                break;
+            case PowerupTypes.DartSpread:
+                GameManager.Instance.monkey.dartSpreadAngle += 5;
+                break;
+            case PowerupTypes.DartSpacing:
+                GameManager.Instance.monkey.dartSpawnSpacing += 0.1f;
+                break;
+            case PowerupTypes.MovementSpeed:
+                GameManager.Instance.monkey.velocity += 0.5F;
+                break;
+            default:
+                break;
+        }
     }
 }

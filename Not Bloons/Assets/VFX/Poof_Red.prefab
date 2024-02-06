@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4690487950650234266}
   - component: {fileID: 6234130588721257567}
   - component: {fileID: -5133929904944997223}
+  - component: {fileID: 6675090449064345508}
   m_Layer: 0
   m_Name: Poof_Red
   m_TagString: Untagged
@@ -119,7 +120,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f98d052544efd344c9d46e622fb59ed9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.306
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -203,3 +204,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6675090449064345508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241171256537601646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4793174e7532d4d85acc628f3297ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

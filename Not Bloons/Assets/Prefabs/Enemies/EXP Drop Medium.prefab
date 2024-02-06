@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6814026654582649053
+--- !u!1 &4340697714764753884
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7221944669105669178}
-  - component: {fileID: 7031346048408123597}
-  - component: {fileID: 2063929468831349584}
-  - component: {fileID: -8105531253047295561}
-  - component: {fileID: 7330758026999797753}
+  - component: {fileID: 5945320367086142616}
+  - component: {fileID: 1907130790402202624}
+  - component: {fileID: 3803368390818804003}
+  - component: {fileID: -743111447720242186}
   m_Layer: 0
-  m_Name: Red Balloon
+  m_Name: EXP Drop Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7221944669105669178
+--- !u!4 &5945320367086142616
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814026654582649053}
+  m_GameObject: {fileID: 4340697714764753884}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -3.8475227, y: -0.8441889, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7031346048408123597
+--- !u!212 &1907130790402202624
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814026654582649053}
+  m_GameObject: {fileID: 4340697714764753884}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,72 +75,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4469129c01828774682438acc45e6896, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ef435df6f4888f5469108067f735a0e2, type: 3}
+  m_Color: {r: 0.08334541, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8525, y: 1.1075}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2063929468831349584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814026654582649053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5a99640575f62448ca8c8c829b7868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balloonType: 0
-  health: 1
-  dropChance: 10
-  deathVFXPrefab: {fileID: 2241171256537601646, guid: ff38d884613e14e46942d956b6d37973, type: 3}
-  velocity: 2
-  normalBalloonSprites:
-  - {fileID: 21300000, guid: e959d9f599d8f1c4d88f7f39545fc49d, type: 3}
-  - {fileID: 21300000, guid: 4469129c01828774682438acc45e6896, type: 3}
-  - {fileID: 21300000, guid: 7d9d6a35c4c66c745a1fef4e5674f853, type: 3}
---- !u!50 &-8105531253047295561
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814026654582649053}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!58 &7330758026999797753
+--- !u!58 &3803368390818804003
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814026654582649053}
+  m_GameObject: {fileID: 4340697714764753884}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -164,9 +115,28 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.55375
+  m_Radius: 0.5
+--- !u!114 &-743111447720242186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340697714764753884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264ff5a8f615d7b4092e9158a1959fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expGained: 50
+  pickupSFX:
+    startup: 1
+    audioClips:
+    - {fileID: 8300000, guid: 5505e4869d2765e4caf064924eace386, type: 3}
+    volume: 0.25
+    pitchRange: 0

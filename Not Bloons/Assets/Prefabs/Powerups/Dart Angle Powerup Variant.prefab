@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2102718915812223476
+--- !u!1001 &3470117991722666635
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4340697714764753884, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
       propertyPath: m_Name
-      value: Dart Number Powerup Variant
+      value: Dart Angle Powerup Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4625441899991637726, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
       propertyPath: m_text
-      value: DART COUNT
+      value: SPREAD
       objectReference: {fileID: 0}
     - target: {fileID: 5945320367086142616, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6703632617850061796, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
       propertyPath: powerupType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

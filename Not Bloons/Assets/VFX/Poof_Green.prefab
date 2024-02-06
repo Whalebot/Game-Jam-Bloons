@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1203630886110102980}
   - component: {fileID: 2814493907546272922}
   - component: {fileID: -7759794109017874636}
+  - component: {fileID: 3141278301488937071}
   m_Layer: 0
   m_Name: Poof_Green
   m_TagString: Untagged
@@ -119,7 +120,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f98d052544efd344c9d46e622fb59ed9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.306
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -203,3 +204,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3141278301488937071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487914700847969160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4793174e7532d4d85acc628f3297ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
