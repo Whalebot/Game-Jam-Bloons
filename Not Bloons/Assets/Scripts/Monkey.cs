@@ -101,7 +101,7 @@ public class Monkey : MonoBehaviour
     }
     public void TakeHit(int dmg = 1)
     {
-        updateHealthEvent?.Invoke();
+  
         health -= dmg;
         if (health <= 0 && !dead)
         {
@@ -109,6 +109,7 @@ public class Monkey : MonoBehaviour
             deathEvent?.Invoke();
             Debug.Log("Death");
         }
+        updateHealthEvent?.Invoke();
     }
     private void FixedUpdate()
     {

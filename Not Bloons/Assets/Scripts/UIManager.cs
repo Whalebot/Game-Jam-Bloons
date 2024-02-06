@@ -34,11 +34,12 @@ public class UIManager : MonoBehaviour
             {
                 hearts[i].transform.GetChild(0).gameObject.SetActive(false);
             }
-            else {
+            else
+            {
                 hearts[i].transform.GetChild(0).gameObject.SetActive(true);
             }
 
-            if (GameManager.Instance.monkey.maxHealth  <= i)
+            if (GameManager.Instance.monkey.maxHealth <= i)
             {
                 hearts[i].transform.gameObject.SetActive(false);
             }
@@ -52,10 +53,20 @@ public class UIManager : MonoBehaviour
     public void OpenPowerupWindow()
     {
         powerupWindow.SetActive(true);
-        for (int i = 0; i < powerupButtons.Count; i++)
+        Powerup.PowerupTypes type1 = Powerup.PowerupTypes.DartSpread;
+        Powerup.PowerupTypes type2 = Powerup.PowerupTypes.DartSpread;
+        for (int i = 0; i < 3; i++)
         {
             Powerup.PowerupTypes randomType = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
-
+            //While duplicate, reroll, please don't infinite loop
+            while (i == 1 && type1 == randomType)
+            {
+                randomType = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
+            }
+            while (i == 2 && type1 == randomType || i == 2 && type2 == randomType)
+            {
+                randomType = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
+            }
             powerupButtons[i].SetupButton(randomType);
         }
 

@@ -133,9 +133,9 @@ MonoBehaviour:
   maxHealth: 3
   velocity: 3
   minimumMovementRange: 1.5
-  dartsPerShot: 2
-  dartSpreadAngle: 10
-  dartSpawnSpacing: 0
+  dartsPerShot: 1
+  dartSpreadAngle: 0
+  dartSpawnSpacing: 0.1
   dartPrefab: {fileID: 8212420511728116251, guid: f19c7871ab35a4b4db2eca3c0f5a7d5c, type: 3}
   dartRateOfFire: 1.5
   dartShootSFX:

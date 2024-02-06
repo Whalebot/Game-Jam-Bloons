@@ -21,6 +21,7 @@ public class Balloon : MonoBehaviour
     public float spawnRate = 3f;
     float timer;
     public GameObject spawnedObject;
+    public List<GameObject> bossSummons;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Balloon : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         SetupBalloon();
         AIManager.Instance.allBalloons.Add(this);
+        timer = spawnRate;
     }
     private void OnDisable()
     {
@@ -37,6 +39,8 @@ public class Balloon : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (transform.rotation != Quaternion.identity)
+            transform.rotation = Quaternion.identity;
         BalloonBehaviour();
 
     }
@@ -68,7 +72,7 @@ public class Balloon : MonoBehaviour
                 rb.velocity = walkDirection * velocity;
                 break;
             case BalloonType.Ranged:
-           
+
                 //Only shoot when in range and only move when out of range
                 if (Vector2.Distance(target.position, transform.position) < shootRange)
                 {
@@ -77,7 +81,7 @@ public class Balloon : MonoBehaviour
                     if (timer <= 0)
                     {
                         timer = spawnRate;
-                        Instantiate(spawnedObject, transform.position, Quaternion.LookRotation( Vector3.forward,walkDirection));
+                        Instantiate(spawnedObject, transform.position, Quaternion.LookRotation(Vector3.forward, walkDirection));
                     }
                 }
                 else
@@ -97,6 +101,34 @@ public class Balloon : MonoBehaviour
                 break;
             case BalloonType.Boss:
                 rb.velocity = walkDirection * velocity;
+                int dartsPerShot = 10;
+                int dartSpreadAngle = 36;
+                timer -= Time.deltaTime;
+
+                if (timer <= 0)
+                {
+                    timer = spawnRate;
+                    for (int i = 0; i < dartsPerShot; i++)
+                    {
+                        Vector3 dartRotation = transform.rotation.eulerAngles;
+                        float spawnOffset = 2;
+
+                        if (dartsPerShot % 2 == 1)
+                        {
+                            float offset = i * dartSpreadAngle - (int)(dartsPerShot / 2f) * dartSpreadAngle;
+                            dartRotation.z -= offset;
+                        }
+                        else
+                        {
+                            float offset = i * dartSpreadAngle - (int)(dartsPerShot / 2f) * dartSpreadAngle + 0.5f * dartSpreadAngle;
+
+                            dartRotation.z -= offset;
+                        }
+                        int rng = Random.Range(0, bossSummons.Count);
+                        Instantiate(bossSummons[rng], transform.position + Quaternion.Euler(dartRotation) * transform.right * spawnOffset, Quaternion.Euler(dartRotation));
+                    }
+                }
+
                 break;
             case BalloonType.Custom:
                 rb.velocity = walkDirection * velocity;
@@ -125,7 +157,7 @@ public class Balloon : MonoBehaviour
         {
             case BalloonType.Normal:
                 if (normalBalloonSprites.Count > health && health > 0)
-                    sr.sprite = normalBalloonSprites[health-1];
+                    sr.sprite = normalBalloonSprites[health - 1];
                 break;
             case BalloonType.Ranged:
                 break;
@@ -140,18 +172,19 @@ public class Balloon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider != null)
-        {
-            if (collision.gameObject.CompareTag("Player"))
+        if (balloonType != BalloonType.Boss)
+            if (collision.collider != null)
             {
-                Monkey monkey = collision.gameObject.GetComponent<Monkey>();
-                if (monkey != null)
+                if (collision.gameObject.CompareTag("Player"))
                 {
-                    monkey.TakeHit();
-                    Death();
+                    Monkey monkey = collision.gameObject.GetComponent<Monkey>();
+                    if (monkey != null)
+                    {
+                        monkey.TakeHit();
+                        Death();
+                    }
                 }
             }
-        }
     }
 
     public enum BalloonType

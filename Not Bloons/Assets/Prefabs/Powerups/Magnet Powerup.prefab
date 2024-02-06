@@ -385,6 +385,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c9e32b149fb1b4ca87cd6758ec10f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupSFX:
+    startup: 1
+    audioClips:
+    - {fileID: 8300000, guid: dd319eb61ec4b6a45aeed9b700eb7748, type: 3}
+    volume: 1
+    pitchRange: 0
 --- !u!1 &5560046135894695215
 GameObject:
   m_ObjectHideFlags: 0

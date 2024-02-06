@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     public event Action gameWinEvent;
     public List<Wave> waves;
 
-
+    public GameObject bossPrefab;
+    public Transform bossSpawnLocation;
 
     private void Awake()
     {
@@ -112,7 +113,11 @@ public class GameManager : MonoBehaviour
             {
                 GameWin();
             }
-            timeOver = true;
+            if (timeOver != true)
+            {
+                Instantiate(bossPrefab, bossSpawnLocation.position, Quaternion.identity);
+                timeOver = true;
+            }
             return;
         }
         timePassed = Time.timeSinceLevelLoad;

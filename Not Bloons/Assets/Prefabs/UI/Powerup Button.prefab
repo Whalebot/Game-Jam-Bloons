@@ -213,7 +213,8 @@ MonoBehaviour:
   powerupType: 0
   powerupSFX:
     startup: 1
-    audioClips: []
+    audioClips:
+    - {fileID: 8300000, guid: 5505e4869d2765e4caf064924eace386, type: 3}
     volume: 1
     pitchRange: 0
   powerupName: {fileID: 6594572565087763595}
