@@ -9,6 +9,7 @@ public class Monkey : MonoBehaviour
     [Header("Controller")]
     public Vector2 inputDirection;
     public int health;
+    public int maxHealth;
     public float velocity;
     public float minimumMovementRange = 1F;
 
@@ -24,7 +25,7 @@ public class Monkey : MonoBehaviour
     public Transform crosshair;
     public Transform gunStartPosition;
     public LineRenderer laserLineRenderer;
-
+    bool dead;
     float lastTimeShot;
     Rigidbody2D rb;
     public event Action buttonHoldAction;
@@ -32,14 +33,22 @@ public class Monkey : MonoBehaviour
     public event Action buttonReleaseAction;
     public event Action rightButtonPress;
 
-    public event Action takeDamageEvent;
+    public event Action updateHealthEvent;
+    public event Action deathEvent;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         buttonHoldAction = SpawnDart;
     }
-
+    public int Health {
+        get { return health; }
+        set {
+            updateHealthEvent?.Invoke();
+            health = Mathf.Clamp(value, 0, maxHealth);
+        }
+    
+    }
     // Update is called once per frame
     void Update()
     {
@@ -50,7 +59,7 @@ public class Monkey : MonoBehaviour
         else inputDirection = Vector2.zero;
 
 
-        UpdateCrosshair(GetMouseWorldPosition());
+
 
         transform.up = (crosshair.position - transform.position).normalized;
 
@@ -86,12 +95,20 @@ public class Monkey : MonoBehaviour
             rightButtonPress?.Invoke();
         }
     }
+    private void LateUpdate()
+    {
+        UpdateCrosshair(GetMouseWorldPosition());
+    }
     public void TakeHit(int dmg = 1)
     {
-        takeDamageEvent?.Invoke();
+        updateHealthEvent?.Invoke();
         health -= dmg;
-        if (health <= 0)
+        if (health <= 0 && !dead)
+        {
+            dead = true;
+            deathEvent?.Invoke();
             Debug.Log("Death");
+        }
     }
     private void FixedUpdate()
     {
@@ -135,13 +152,13 @@ public class Monkey : MonoBehaviour
                 {
                     float offset = i * dartSpreadAngle - (int)(dartsPerShot / 2f) * dartSpreadAngle;
                     spawnOffset = i * dartSpawnSpacing - (int)(dartsPerShot / 2f) * dartSpawnSpacing;
-                    dartRotation.z += offset;
+                    dartRotation.z -= offset;
                 }
                 else
                 {
                     float offset = i * dartSpreadAngle - (int)(dartsPerShot / 2f) * dartSpreadAngle + 0.5f * dartSpreadAngle;
                     spawnOffset = i * dartSpawnSpacing - (int)(dartsPerShot / 2f) * dartSpawnSpacing + 0.5f * dartSpawnSpacing;
-                    dartRotation.z += offset;
+                    dartRotation.z -= offset;
                 }
                 Instantiate(dartPrefab, gunStartPosition.transform.position + transform.right * spawnOffset, Quaternion.Euler(dartRotation));
             }

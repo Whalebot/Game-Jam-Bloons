@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: health
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
+      propertyPath: expDrop
+      value: 
+      objectReference: {fileID: 4340697714764753884, guid: 5d065a118069d444789ae4854e92b297, type: 3}
     - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: velocity
       value: 2
@@ -20,6 +24,10 @@ PrefabInstance:
       propertyPath: balloonType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
+      propertyPath: spawnedObject
+      value: 
+      objectReference: {fileID: 200490518604873198, guid: aa2ebec8adee47f45834903eecf8bc32, type: 3}
     - target: {fileID: 2063929468831349584, guid: 29098eefb40df0d429f8b954e76cb4cf, type: 3}
       propertyPath: deathVFXPrefab
       value: 
@@ -131,3 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRate: 3
   spawnedObject: {fileID: 200490518604873198, guid: aa2ebec8adee47f45834903eecf8bc32, type: 3}
+  levelSpawner: 0

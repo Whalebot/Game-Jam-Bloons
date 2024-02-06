@@ -29,8 +29,12 @@ public class Balloon : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         SetupBalloon();
+        AIManager.Instance.allBalloons.Add(this);
     }
-
+    private void OnDisable()
+    {
+        AIManager.Instance.allBalloons.Remove(this);
+    }
     private void FixedUpdate()
     {
         BalloonBehaviour();
@@ -41,6 +45,7 @@ public class Balloon : MonoBehaviour
     public void TakeHit()
     {
         health--;
+
         SetupBalloon();
         if (health <= 0)
         {
@@ -119,8 +124,8 @@ public class Balloon : MonoBehaviour
         switch (balloonType)
         {
             case BalloonType.Normal:
-                if (normalBalloonSprites.Count > health && health >= 0)
-                    sr.sprite = normalBalloonSprites[health];
+                if (normalBalloonSprites.Count > health && health > 0)
+                    sr.sprite = normalBalloonSprites[health-1];
                 break;
             case BalloonType.Ranged:
                 break;

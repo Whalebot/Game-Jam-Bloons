@@ -5,6 +5,7 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     public PowerupTypes powerupType;
+    public SFX powerupSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +28,11 @@ public class Powerup : MonoBehaviour
 
     public enum PowerupTypes
     {
-        FireRate, DartsFired, DartSpread, DartSpacing, MovementSpeed
+        FireRate, DartsFired, DartSpread, DartSpacing, MovementSpeed, Health
     }
     public void GivePowerup()
     {
+        AudioManager.Instance.PlaySFX(powerupSFX);
         switch (powerupType)
         {
             case PowerupTypes.FireRate:
@@ -47,6 +49,10 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupTypes.MovementSpeed:
                 GameManager.Instance.monkey.velocity += 0.5F;
+                break;
+            case PowerupTypes.Health:
+                GameManager.Instance.monkey.maxHealth++;
+                GameManager.Instance.monkey.Health++;
                 break;
             default:
                 break;

@@ -23,16 +23,28 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.monkey.takeDamageEvent += UpdateHealth;
+        GameManager.Instance.monkey.updateHealthEvent += UpdateHealth;
     }
 
     void UpdateHealth()
     {
         for (int i = 0; i < hearts.Count; i++)
         {
-            if (GameManager.Instance.monkey.health < i)
+            if (GameManager.Instance.monkey.health - 1 <= i)
             {
-                hearts[i].gameObject.SetActive(false);
+                hearts[i].transform.GetChild(0).gameObject.SetActive(false);
+            }
+            else {
+                hearts[i].transform.GetChild(0).gameObject.SetActive(true);
+            }
+
+            if (GameManager.Instance.monkey.maxHealth  <= i)
+            {
+                hearts[i].transform.gameObject.SetActive(false);
+            }
+            else
+            {
+                hearts[i].transform.gameObject.SetActive(true);
             }
         }
     }
@@ -43,7 +55,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < powerupButtons.Count; i++)
         {
             Powerup.PowerupTypes randomType = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
-    
+
             powerupButtons[i].SetupButton(randomType);
         }
 
@@ -58,15 +70,20 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         levelText.text = "Lv: " + GameManager.Instance.level;
         expBar.fillAmount = ((float)GameManager.Instance.exp / (float)GameManager.Instance.expToLevel);
 
+        if (GameManager.Instance.timeOver)
+        {
+            //Text Timer stuff
+            string minutes = Mathf.Floor(GameManager.Instance.timer / 60).ToString("00");
+            string seconds = (GameManager.Instance.timer % 60).ToString("00");
 
-        //Text Timer stuff
-        string minutes = Mathf.Floor(GameManager.Instance.timer / 60).ToString("00");
-        string seconds = (GameManager.Instance.timer % 60).ToString("00");
-
-        string timerString = $"{minutes}:{seconds}";
-        countdownText.text = timerString;
+            string timerString = $"{minutes}:{seconds}";
+            countdownText.text = timerString;
+        }
+        else
+            countdownText.gameObject.SetActive(false);
     }
 }

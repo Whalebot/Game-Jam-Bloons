@@ -6,7 +6,7 @@ public class AIManager : MonoBehaviour
 {
     public static AIManager Instance;
     public List<GameObject> powerupDrops;
-
+    public List<Balloon> allBalloons;
     private void Awake()
     {
         Instance = this;

@@ -7,6 +7,7 @@ public class PowerupButton : Powerup
 {
     Button button;
     public TextMeshProUGUI powerupName;
+
     // Start is called before the first frame update
     void Start()
     {

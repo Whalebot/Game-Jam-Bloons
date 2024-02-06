@@ -18,20 +18,48 @@ public class GameManager : MonoBehaviour
     public SFX levelUpSound;
 
     public Monkey monkey;
+    public bool timeOver;
+    public bool gameOver;
+    public bool won;
+
     public float timer = 300f;
     public float timePassed = 300f;
     float startTimer;
     public int wave = 1;
     public SFX waveChangeSFX;
-
+    public SFX winSFX;
+    public SFX loseSFX;
 
     public event Action<Vector3> waveSpawn;
+    public event Action gameOverEvent;
+    public event Action gameWinEvent;
     public List<Wave> waves;
+
+
 
     private void Awake()
     {
         Instance = this;
         startTimer = timer;
+        Time.timeScale = 1.0f;
+    }
+    private void Start()
+    {
+        monkey.deathEvent += GameLoss;
+    }
+    void GameWin()
+    {
+        won = true;
+        AudioManager.Instance.PlaySFX(winSFX);
+        Time.timeScale = 0;
+        gameWinEvent?.Invoke();
+    }
+    void GameLoss()
+    {
+        gameOver = true;
+        AudioManager.Instance.PlaySFX(loseSFX);
+        Time.timeScale = 0;
+        gameOverEvent?.Invoke();
     }
     public Wave CurrentWave()
     {
@@ -39,7 +67,7 @@ public class GameManager : MonoBehaviour
         {
             return waves[waves.Count - 1];
         }
-        return waves[wave-1];
+        return waves[wave - 1];
     }
 
     public int Exp
@@ -57,8 +85,8 @@ public class GameManager : MonoBehaviour
                 expToLevel = (int)(100 * Mathf.Pow(1.5f, level - 1));
                 AudioManager.Instance.PlaySFX(levelUpSound);
 
-                if (monkey.health < 3)
-                    monkey.health++;
+
+                monkey.Health++;
 
                 UIManager.Instance.OpenPowerupWindow();
             }
@@ -77,6 +105,15 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Return))
         {
             RestartTheGame();
+        }
+        if (timer <= 0 && !won)
+        {
+            if (AIManager.Instance.allBalloons.Count == 0)
+            {
+                GameWin();
+            }
+            timeOver = true;
+            return;
         }
         timePassed = Time.timeSinceLevelLoad;
         timer -= Time.deltaTime;

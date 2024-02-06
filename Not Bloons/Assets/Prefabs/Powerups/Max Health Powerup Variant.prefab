@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4340697714764753884, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
       propertyPath: m_Name
-      value: Speed Powerup Variant
+      value: Max Health Powerup Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4625441899991637726, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
       propertyPath: m_text
-      value: MOVEMENT SPEED
+      value: HEALTH
       objectReference: {fileID: 0}
     - target: {fileID: 5945320367086142616, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6703632617850061796, guid: fe1038da785e1954993cb45d33e6cab0, type: 3}
       propertyPath: powerupType
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

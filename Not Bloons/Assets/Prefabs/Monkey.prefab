@@ -129,7 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputDirection: {x: 0, y: 0}
-  health: 0
+  health: 3
+  maxHealth: 3
   velocity: 3
   minimumMovementRange: 1.5
   dartsPerShot: 2
