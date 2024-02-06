@@ -53,22 +53,25 @@ public class UIManager : MonoBehaviour
     public void OpenPowerupWindow()
     {
         powerupWindow.SetActive(true);
-        Powerup.PowerupTypes type1 = Powerup.PowerupTypes.DartSpread;
-        Powerup.PowerupTypes type2 = Powerup.PowerupTypes.DartSpread;
-        for (int i = 0; i < 3; i++)
-        {
-            Powerup.PowerupTypes randomType = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
-            //While duplicate, reroll, please don't infinite loop
-            while (i == 1 && type1 == randomType)
-            {
-                randomType = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
-            }
-            while (i == 2 && type1 == randomType || i == 2 && type2 == randomType)
-            {
-                randomType = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
-            }
-            powerupButtons[i].SetupButton(randomType);
+
+        //Rolling 1
+        Powerup.PowerupTypes randomType = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
+        powerupButtons[0].SetupButton(randomType);
+
+        //Rolling 2
+        Powerup.PowerupTypes randomType2 = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
+        while (randomType2 == randomType) {
+            randomType2 = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
         }
+        powerupButtons[1].SetupButton(randomType2);
+
+        //Rolling 3
+        Powerup.PowerupTypes randomType3 = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
+        while (randomType3 == randomType || randomType3 == randomType2)
+        {
+            randomType3 = (Powerup.PowerupTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Powerup.PowerupTypes)).Length);
+        }
+        powerupButtons[2].SetupButton(randomType3);
 
         Time.timeScale = 0;
     }
