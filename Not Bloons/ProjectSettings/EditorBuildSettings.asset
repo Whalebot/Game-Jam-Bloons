@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Not Bloons 1.unity
+    path: Assets/Scenes/Title Screen.unity
     guid: 99fb79bf008b8f14bb3540488b65f154
   - enabled: 1
     path: Assets/Scenes/Not Bloons.unity
